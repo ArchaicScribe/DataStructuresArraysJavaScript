@@ -5,11 +5,11 @@ const numbers = [1,2,3,4,5];
 
 
 //push
-strings.push('e');
+strings.push('e'); //O(1)
 
 //pop
-strings.pop();
-strings.pop();
+strings.pop();//O(1)
+strings.pop();//O(1)
 
 //unshift
 strings.unshift('x')
