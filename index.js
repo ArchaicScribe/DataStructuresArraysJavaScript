@@ -1,44 +1,43 @@
-class MyArray{
-	constructor(){
-		this.length = 0;
-		this.data = {};
+function reverseString(str) {
+	var newString = "";
+	for (var i = str.length - 1; i >= 0; i--) {
+		newString += str[i];
 	}
-	get(index){
-return this.data[index];
-	}
-
-	push(item){
-		this.data[this.length] = item;
-		this.length++;
-		return this.length;
-	}
-
-	pop(item){
-		const lastItem = this.data[this.length - 1];
-		delete this.data[this.length - 1];
-		this.legnth--;
-		return lastItem;
-	}
-
-	delete(index){
-		const item = this.data[index];
-		this.shiftItems(index);
-	}
-
-	shiftItems(index){
-		for(let i = index; i < this.length - 1; i++){
-			this.data[i] = this.data[i + 1];//adds the data that was at the adjacent index
-		}
-		delete this.data[this.length - 1];
-		this.length--;
-	}
+	return newString;
 }
 
-const newArray = new MyArray();
-newArray.push('Hi');
-newArray.push('Hey');
-newArray.push('Hello');
-newArray.push('Good morning');
-newArray.push('Hola');
-newArray.delete(2);
-console.log(newArray);
+
+reverseString("Good Day");
+
+function reverseStringCheck(str) {
+	if (!str || str.length < 2) {
+		return 'Not a valid input';
+	}
+	const backwardsArray = [];
+	const totalItems = str.length - 1;
+	for (let i = totalItems; i >= 0; i--) {
+		backwardsArray.push(str[i]);
+	}
+
+	return backwardsArray.join('');
+}
+
+
+
+
+//Built-in methods for reversing a string
+function reverseStringSimple(str) {
+	return str.split('').reverse().join('');
+}
+
+//ES6 format
+const reverse4 = str => str.split('').reverse().join('');
+
+//Spread Operator 
+const reverse5 = str => [...str].reverse().join('');
+
+reverseString("Hello");
+reverseStringCheck("Good");
+reverseStringSimple("Hello, there");
+reverse4("Why, Hello");
+reverse5("The Dark Side");
