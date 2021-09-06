@@ -1,43 +1,39 @@
-function reverseString(str) {
-	var newString = "";
-	for (var i = str.length - 1; i >= 0; i--) {
-		newString += str[i];
-	}
-	return newString;
+mergeSortedArrays([0, 3, 4, 31], [3, 4, 6, 30]);
+
+function mergeSortedArrays(arr1, arr2) {
+	let result = [...arr1, ...arr2];
+	return result.sort((a, b) => a - b);
 }
 
+function mergeSortedArrays2(arr1, arr2) {
+	const mergedArray = [];
+	let arr1Item = arr1[0];
+	let arr2Item = arr2[0];
+	let i = 1;
+	let j = 2;
 
-reverseString("Good Day");
-
-function reverseStringCheck(str) {
-	if (!str || str.length < 2) {
-		return 'Not a valid input';
+	//Check input
+	if (arr1.length === 0) {
+		return arr2;
 	}
-	const backwardsArray = [];
-	const totalItems = str.length - 1;
-	for (let i = totalItems; i >= 0; i--) {
-		backwardsArray.push(str[i]);
+	if (arr2.length === 0) {
+		return arr1;
 	}
 
-	return backwardsArray.join('');
+	while (arr1Item || arr2Item) {
+		console	.log(arr1Item, arr2Item);
+		if (!arr2Item || arr1Item < arr2Item) {
+			mergedArray.push(arr1Item);
+			arr1Item = arr1[i];
+			i++
+		} else {
+			mergedArray.push(arr2Item);
+			arr2Item = arr2[j];
+			j++;
+		}
+	}
+
+	return mergedArray;
 }
-
-
-
-
-//Built-in methods for reversing a string
-function reverseStringSimple(str) {
-	return str.split('').reverse().join('');
-}
-
-//ES6 format
-const reverse4 = str => str.split('').reverse().join('');
-
-//Spread Operator 
-const reverse5 = str => [...str].reverse().join('');
-
-reverseString("Hello");
-reverseStringCheck("Good");
-reverseStringSimple("Hello, there");
-reverse4("Why, Hello");
-reverse5("The Dark Side");
+mergeSortedArrays([0, 3, 4, 31], [3, 4, 6, 30]);
+mergeSortedArrays2([0, 3, 4, 31], [3, 4, 6, 30]);
